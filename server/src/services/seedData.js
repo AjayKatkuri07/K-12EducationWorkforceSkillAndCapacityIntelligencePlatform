@@ -1,0 +1,887 @@
+import bcrypt from 'bcryptjs';
+import { v4 as uuidv4 } from 'uuid';
+import { initStoreData, resetStoreData } from '../models/store.js';
+
+export function getSeedData() {
+  const salt = bcrypt.genSaltSync(10);
+  const defaultPasswordHash = bcrypt.hashSync('Password123!', salt);
+
+  const users = [
+    {
+      _id: 'usr-admin-1',
+      id: 'usr-admin-1',
+      email: 'admin@oakridge.edu',
+      passwordHash: defaultPasswordHash,
+      name: 'Dr. Eleanor Vance',
+      role: 'HRAdmin',
+      roleTitle: 'Director of Human Resources & Governance',
+      campus: 'District Office & All Campuses',
+      department: 'HR & Operational Governance',
+      active: true,
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200',
+      lastLogin: new Date().toISOString(),
+      createdAt: '2026-01-10T08:00:00.000Z'
+    },
+    {
+      _id: 'usr-planner-1',
+      id: 'usr-planner-1',
+      email: 'planner@oakridge.edu',
+      passwordHash: defaultPasswordHash,
+      name: 'Marcus Sterling',
+      role: 'WorkforcePlanner',
+      roleTitle: 'Director of Academic Planning & Scheduling',
+      campus: 'District Central',
+      department: 'Workforce & Curriculum Planning',
+      active: true,
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200',
+      lastLogin: new Date().toISOString(),
+      createdAt: '2026-01-12T09:30:00.000Z'
+    },
+    {
+      _id: 'usr-lead-1',
+      id: 'usr-lead-1',
+      email: 'lead@oakridge.edu',
+      passwordHash: defaultPasswordHash,
+      name: 'Sarah Jenkins',
+      role: 'TeamLead',
+      roleTitle: 'STEM & Mathematics Department Chair',
+      campus: 'Oakridge High Campus',
+      department: 'Mathematics & Computing',
+      active: true,
+      avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200',
+      lastLogin: new Date().toISOString(),
+      createdAt: '2026-01-15T10:15:00.000Z'
+    },
+    {
+      _id: 'usr-teacher-1',
+      id: 'usr-teacher-1',
+      email: 'teacher@oakridge.edu',
+      passwordHash: defaultPasswordHash,
+      name: 'David Chen',
+      role: 'Employee',
+      roleTitle: 'Senior Mathematics & Robotics Educator',
+      campus: 'Oakridge High Campus',
+      department: 'Mathematics & Computing',
+      active: true,
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200',
+      lastLogin: new Date().toISOString(),
+      createdAt: '2026-01-20T11:00:00.000Z'
+    },
+    {
+      _id: 'usr-counselor-1',
+      id: 'usr-counselor-1',
+      email: 'counselor@oakridge.edu',
+      passwordHash: defaultPasswordHash,
+      name: 'Maria Rodriguez',
+      role: 'Employee',
+      roleTitle: 'Special Education & Student Care Specialist',
+      campus: 'Oakridge High Campus',
+      department: 'Special Needs & Counseling',
+      active: true,
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200',
+      lastLogin: new Date().toISOString(),
+      createdAt: '2026-01-22T14:20:00.000Z'
+    }
+  ];
+
+  const workers = [
+    {
+      _id: 'wrk-chen-1',
+      id: 'wrk-chen-1',
+      userId: 'usr-teacher-1',
+      staffId: 'STAFF-2041',
+      fullName: 'David Chen',
+      email: 'teacher@oakridge.edu',
+      phone: '+1 (555) 234-5678',
+      roleTitle: 'Senior Mathematics & Robotics Educator',
+      department: 'Mathematics & Computing',
+      campus: 'Oakridge High Campus',
+      employmentType: 'Full-Time',
+      fte: 1.0,
+      weeklyHoursMax: 40,
+      currentWorkloadHours: 42,
+      utilizationRate: 105,
+      burnoutRisk: 'Critical',
+      burnoutFactors: [
+        'Weekly teaching & prep hours exceed 40 hours limit (42h / 105% util)',
+        'Teaching 3 distinct AP & Advanced courses simultaneously',
+        'Coaching after-school Robotics team without coverage'
+      ],
+      skills: [
+        { id: 'sk-1', name: 'AP Calculus BC', category: 'STEM & Computing', proficiency: 5, verified: true, evidence: 'AP College Board 100% pass rate 2025' },
+        { id: 'sk-2', name: 'Python & Robotics Pedagogy', category: 'STEM & Computing', proficiency: 5, verified: true, evidence: 'State FIRST Robotics Coach Finalist' },
+        { id: 'sk-3', name: 'Differentiated Instruction', category: 'Pedagogical Excellence', proficiency: 4, verified: true, evidence: 'Instructional Coach Peer Evaluation' },
+        { id: 'sk-4', name: 'Formative Assessment Design', category: 'Pedagogical Excellence', proficiency: 4, verified: true, evidence: 'District Curriculum Workshop 2025' },
+        { id: 'sk-5', name: 'Special Needs Accommodation (504/IEP)', category: 'Special Education & IEP', proficiency: 3, verified: false, evidence: 'District In-service Training' }
+      ],
+      certifications: [
+        { id: 'crt-1', name: 'State Master Educator License (Mathematics 7-12)', issuer: 'State Board of Education', issueDate: '2022-06-01', expiryDate: '2027-06-30', status: 'valid', code: 'EDU-NY-88912' },
+        { id: 'crt-2', name: 'AP Calculus BC Certified Instructor', issuer: 'College Board', issueDate: '2021-08-15', expiryDate: '2026-10-15', status: 'valid', code: 'CB-CALC-4091' },
+        { id: 'crt-3', name: 'Google Certified Educator Level 2', issuer: 'Google for Education', issueDate: '2023-04-10', expiryDate: '2026-10-10', status: 'expiring_soon', code: 'GCE-99214' }
+      ],
+      availability: {
+        monday: ['08:00-11:30', '13:00-15:30'],
+        tuesday: ['08:00-11:30', '13:00-15:30'],
+        wednesday: ['08:00-12:00', '14:00-16:00'],
+        thursday: ['08:00-11:30', '13:00-15:30'],
+        friday: ['08:00-12:00']
+      },
+      experienceYears: 11,
+      developmentGoals: [
+        { id: 'dg-1', goal: 'Attain District Instructional Technology Mentor Certification', targetDate: '2026-12-15', status: 'in_progress', linkedSkill: 'Classroom EdTech' },
+        { id: 'dg-2', goal: 'Complete Dual-Enrollment University Accreditation Pathway', targetDate: '2027-05-30', status: 'planned', linkedSkill: 'Higher Ed Pedagogy' }
+      ],
+      assignedClassesCount: 5,
+      studentCaseload: 135,
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200'
+    },
+    {
+      _id: 'wrk-rodriguez-2',
+      id: 'wrk-rodriguez-2',
+      userId: 'usr-counselor-1',
+      staffId: 'STAFF-1894',
+      fullName: 'Maria Rodriguez',
+      email: 'counselor@oakridge.edu',
+      phone: '+1 (555) 345-6789',
+      roleTitle: 'Special Education & Student Care Specialist',
+      department: 'Special Needs & Counseling',
+      campus: 'Oakridge High Campus',
+      employmentType: 'Full-Time',
+      fte: 1.0,
+      weeklyHoursMax: 40,
+      currentWorkloadHours: 43,
+      utilizationRate: 108,
+      burnoutRisk: 'High',
+      burnoutFactors: [
+        'Active IEP caseload of 32 students (State guideline recommendation: 20)',
+        'Mandatory compliance documentation deficit due to meeting volume',
+        'Certification expiring within 18 days'
+      ],
+      skills: [
+        { id: 'sk-6', name: 'IEP Case Management & Compliance', category: 'Special Education & IEP', proficiency: 5, verified: true, evidence: 'State Special Education Audit 100% pass' },
+        { id: 'sk-7', name: 'Social-Emotional Learning (SEL)', category: 'Social-Emotional Learning & Care', proficiency: 5, verified: true, evidence: 'CASEL Certified Trainer' },
+        { id: 'sk-8', name: 'Trauma-Informed Classroom Practices', category: 'Social-Emotional Learning & Care', proficiency: 4, verified: true, evidence: 'Child Trauma Academy Fellowship' },
+        { id: 'sk-9', name: 'Bilingual Spanish Instruction & Translation', category: 'ESL & Multilingual', proficiency: 5, verified: true, evidence: 'Native Fluency & ACTFL Certified' },
+        { id: 'sk-10', name: 'Crisis De-escalation & Safety', category: 'Social-Emotional Learning & Care', proficiency: 4, verified: true, evidence: 'CPI Nonviolent Crisis Intervention' }
+      ],
+      certifications: [
+        { id: 'crt-4', name: 'Special Education Specialist Credential (K-12)', issuer: 'State Department of Education', issueDate: '2021-10-01', expiryDate: '2026-09-26', status: 'expiring_soon', code: 'SPED-90812' },
+        { id: 'crt-5', name: 'Licensed Professional School Counselor (LPC)', issuer: 'National Board of Certified Counselors', issueDate: '2020-05-15', expiryDate: '2028-05-15', status: 'valid', code: 'NBCC-7712' },
+        { id: 'crt-6', name: 'Crisis Prevention Institute (CPI) Certified', issuer: 'CPI International', issueDate: '2024-02-10', expiryDate: '2026-02-10', status: 'expired', code: 'CPI-2024-918' }
+      ],
+      availability: {
+        monday: ['08:00-12:00', '13:00-16:00'],
+        tuesday: ['08:00-12:00', '13:00-16:00'],
+        wednesday: ['08:00-12:00', '13:00-16:00'],
+        thursday: ['08:00-12:00', '13:00-16:00'],
+        friday: ['08:00-14:00']
+      },
+      experienceYears: 9,
+      developmentGoals: [
+        { id: 'dg-3', goal: 'Complete Renewal of Special Education Credential and CPI', targetDate: '2026-09-20', status: 'urgent', linkedSkill: 'IEP Case Management' },
+        { id: 'dg-4', goal: 'Establish Parent Bilingual Peer Support Group', targetDate: '2026-11-01', status: 'in_progress', linkedSkill: 'ESL & Multilingual' }
+      ],
+      assignedClassesCount: 3,
+      studentCaseload: 48,
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200'
+    },
+    {
+      _id: 'wrk-jenkins-3',
+      id: 'wrk-jenkins-3',
+      userId: 'usr-lead-1',
+      staffId: 'STAFF-1540',
+      fullName: 'Sarah Jenkins',
+      email: 'lead@oakridge.edu',
+      phone: '+1 (555) 456-7890',
+      roleTitle: 'STEM & Mathematics Department Chair',
+      department: 'Mathematics & Computing',
+      campus: 'Oakridge High Campus',
+      employmentType: 'Full-Time',
+      fte: 1.0,
+      weeklyHoursMax: 40,
+      currentWorkloadHours: 37,
+      utilizationRate: 92,
+      burnoutRisk: 'Moderate',
+      burnoutFactors: [
+        'Dual responsibilities: Department administration and AP Statistics load',
+        'High volume of teacher evaluation observations scheduled this quarter'
+      ],
+      skills: [
+        { id: 'sk-11', name: 'AP Statistics & Data Science', category: 'STEM & Computing', proficiency: 5, verified: true, evidence: 'AP Chief Reader Commendation' },
+        { id: 'sk-12', name: 'Curriculum & Timetable Design', category: 'Educational Leadership', proficiency: 4, verified: true, evidence: 'District Standards Alignment Committee' },
+        { id: 'sk-13', name: 'Instructional Coaching & Mentorship', category: 'Educational Leadership', proficiency: 5, verified: true, evidence: 'Coached 8 novice teachers to tenure' },
+        { id: 'sk-14', name: 'Algebra 2 & Pre-Calculus', category: 'STEM & Computing', proficiency: 5, verified: true, evidence: '14 years classroom tenure' }
+      ],
+      certifications: [
+        { id: 'crt-7', name: 'School Building Leader / Principal Certification', issuer: 'State Board of Education', issueDate: '2023-01-15', expiryDate: '2028-01-15', status: 'valid', code: 'SBL-2023-110' },
+        { id: 'crt-8', name: 'Permanent Secondary Mathematics Teaching Credential', issuer: 'State Education Dept', issueDate: '2016-09-01', expiryDate: '2030-09-01', status: 'valid', code: 'PERM-NY-991' }
+      ],
+      availability: {
+        monday: ['09:00-12:00', '13:00-16:00'],
+        tuesday: ['09:00-12:00', '13:00-16:00'],
+        wednesday: ['08:00-11:00', '13:00-15:00'],
+        thursday: ['09:00-12:00', '13:00-16:00'],
+        friday: ['09:00-13:00']
+      },
+      experienceYears: 15,
+      developmentGoals: [
+        { id: 'dg-5', goal: 'Design cross-campus STEM capacity redistribution blueprint', targetDate: '2026-10-30', status: 'in_progress', linkedSkill: 'Curriculum Design' }
+      ],
+      assignedClassesCount: 3,
+      studentCaseload: 78,
+      avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200'
+    },
+    {
+      _id: 'wrk-wilson-4',
+      id: 'wrk-wilson-4',
+      userId: null,
+      staffId: 'STAFF-2110',
+      fullName: 'James Wilson',
+      email: 'jwilson@oakridge.edu',
+      phone: '+1 (555) 567-8901',
+      roleTitle: 'English Language Arts & Literature Specialist',
+      department: 'Humanities & Languages',
+      campus: 'Oakridge High Campus',
+      employmentType: 'Full-Time',
+      fte: 1.0,
+      weeklyHoursMax: 40,
+      currentWorkloadHours: 32,
+      utilizationRate: 80,
+      burnoutRisk: 'Low',
+      burnoutFactors: ['Balanced schedule with 8 open prep & intervention hours'],
+      skills: [
+        { id: 'sk-15', name: 'AP English Literature & Composition', category: 'Pedagogical Excellence', proficiency: 5, verified: true, evidence: 'AP Exam Reader 2024' },
+        { id: 'sk-16', name: 'Expository Writing & Essay Rubrics', category: 'Pedagogical Excellence', proficiency: 5, verified: true, evidence: 'Published in Edutopia' },
+        { id: 'sk-17', name: 'ESL Support for Academic Writing', category: 'ESL & Multilingual', proficiency: 3, verified: true, evidence: 'District In-service' }
+      ],
+      certifications: [
+        { id: 'crt-9', name: 'Secondary English Teaching License (7-12)', issuer: 'State Board of Education', issueDate: '2022-08-01', expiryDate: '2027-08-01', status: 'valid', code: 'ELA-NY-5512' }
+      ],
+      availability: {
+        monday: ['08:00-14:00'],
+        tuesday: ['08:00-14:00'],
+        wednesday: ['08:00-14:00'],
+        thursday: ['08:00-14:00'],
+        friday: ['08:00-12:00']
+      },
+      experienceYears: 8,
+      developmentGoals: [],
+      assignedClassesCount: 4,
+      studentCaseload: 96,
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200'
+    },
+    {
+      _id: 'wrk-patel-5',
+      id: 'wrk-patel-5',
+      userId: null,
+      staffId: 'STAFF-2204',
+      fullName: 'Dr. Priya Patel',
+      email: 'ppatel@oakridge.edu',
+      phone: '+1 (555) 678-9012',
+      roleTitle: 'Biology & Biomedical Science Lead',
+      department: 'Science & Engineering',
+      campus: 'Oakridge High Campus',
+      employmentType: 'Full-Time',
+      fte: 1.0,
+      weeklyHoursMax: 40,
+      currentWorkloadHours: 35,
+      utilizationRate: 88,
+      burnoutRisk: 'Low',
+      burnoutFactors: ['Normal workload, manageable lab sections'],
+      skills: [
+        { id: 'sk-18', name: 'IB / AP Biology Instruction', category: 'STEM & Computing', proficiency: 5, verified: true, evidence: 'PhD Cellular Biology, 6 yrs teaching' },
+        { id: 'sk-19', name: 'Lab Safety & OSHA Compliance', category: 'STEM & Computing', proficiency: 5, verified: true, evidence: 'District Science Safety Coordinator' },
+        { id: 'sk-20', name: 'Inquiry-Based Science Pedagogy', category: 'Pedagogical Excellence', proficiency: 4, verified: true, evidence: 'NSTA Presenter' }
+      ],
+      certifications: [
+        { id: 'crt-10', name: 'Comprehensive Science Certification (7-12)', issuer: 'State Department of Ed', issueDate: '2021-05-10', expiryDate: '2026-05-10', status: 'expiring_soon', code: 'SCI-NY-7721' }
+      ],
+      availability: {
+        monday: ['08:30-15:00'],
+        tuesday: ['08:30-15:00'],
+        wednesday: ['08:30-15:00'],
+        thursday: ['08:30-15:00'],
+        friday: ['08:30-13:00']
+      },
+      experienceYears: 7,
+      developmentGoals: [],
+      assignedClassesCount: 4,
+      studentCaseload: 102,
+      avatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=200'
+    },
+    {
+      _id: 'wrk-watson-6',
+      id: 'wrk-watson-6',
+      userId: null,
+      staffId: 'STAFF-1982',
+      fullName: 'Emily Watson',
+      email: 'ewatson@oakridge.edu',
+      phone: '+1 (555) 789-0123',
+      roleTitle: 'Grade 4 Lead Teacher & Literacy Coach',
+      department: 'Elementary Education',
+      campus: 'Lincoln Elementary Campus',
+      employmentType: 'Full-Time',
+      fte: 1.0,
+      weeklyHoursMax: 40,
+      currentWorkloadHours: 41,
+      utilizationRate: 102,
+      burnoutRisk: 'High',
+      burnoutFactors: [
+        'Class size reached 28 elementary students with 7 Tier-2 literacy readers',
+        'Coordinating parent response communications across 2 classes'
+      ],
+      skills: [
+        { id: 'sk-21', name: 'Early Literacy & Phonics (Orton-Gillingham)', category: 'Pedagogical Excellence', proficiency: 5, verified: true, evidence: 'Certified Literacy Specialist' },
+        { id: 'sk-22', name: 'Positive Behavioral Interventions (PBIS)', category: 'Social-Emotional Learning & Care', proficiency: 4, verified: true, evidence: 'PBIS Campus Coach' },
+        { id: 'sk-23', name: 'Guided Math Workshop Model', category: 'Pedagogical Excellence', proficiency: 4, verified: true, evidence: 'Model Classroom 2024' }
+      ],
+      certifications: [
+        { id: 'crt-11', name: 'Early Childhood & Elementary Certification (Birth-Grade 6)', issuer: 'State Board of Education', issueDate: '2020-07-01', expiryDate: '2028-07-01', status: 'valid', code: 'ELEM-NY-1029' }
+      ],
+      availability: {
+        monday: ['08:00-15:30'],
+        tuesday: ['08:00-15:30'],
+        wednesday: ['08:00-15:30'],
+        thursday: ['08:00-15:30'],
+        friday: ['08:00-14:00']
+      },
+      experienceYears: 12,
+      developmentGoals: [],
+      assignedClassesCount: 2,
+      studentCaseload: 54,
+      avatar: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=200'
+    },
+    {
+      _id: 'wrk-miller-7',
+      id: 'wrk-miller-7',
+      userId: null,
+      staffId: 'STAFF-2301',
+      fullName: 'Lucas Miller',
+      email: 'lmiller@oakridge.edu',
+      phone: '+1 (555) 890-1234',
+      roleTitle: 'Contractor Mathematics Interventionist',
+      department: 'Mathematics & Computing',
+      campus: 'Oakridge Middle Campus',
+      employmentType: 'Contractor',
+      fte: 0.5,
+      weeklyHoursMax: 20,
+      currentWorkloadHours: 16,
+      utilizationRate: 80,
+      burnoutRisk: 'Low',
+      burnoutFactors: ['Ample capacity for 4-6 additional intervention hours'],
+      skills: [
+        { id: 'sk-24', name: 'Algebra 1 Tier 2 Intervention', category: 'STEM & Computing', proficiency: 4, verified: true, evidence: 'Math Recovery Certified' },
+        { id: 'sk-25', name: 'Middle School Math Foundations', category: 'Pedagogical Excellence', proficiency: 4, verified: true, evidence: '3 yrs intervention track record' }
+      ],
+      certifications: [
+        { id: 'crt-12', name: 'Provisional Mathematics Certificate (5-9)', issuer: 'State Board of Ed', issueDate: '2024-01-10', expiryDate: '2029-01-10', status: 'valid', code: 'PROV-NY-6641' }
+      ],
+      availability: {
+        monday: ['12:00-16:00'],
+        tuesday: ['12:00-16:00'],
+        thursday: ['12:00-16:00'],
+        friday: ['10:00-14:00']
+      },
+      experienceYears: 4,
+      developmentGoals: [],
+      assignedClassesCount: 2,
+      studentCaseload: 26,
+      avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=200'
+    }
+  ];
+
+  const skills = [
+    { id: 'sk-tax-1', name: 'Differentiated Instruction', category: 'Pedagogical Excellence', demandLevel: 'Critical', requiredProficiencyThreshold: 4, description: 'Adapting content, process, and product to meet diverse learner needs in mixed-ability classrooms.' },
+    { id: 'sk-tax-2', name: 'AP Calculus BC', category: 'STEM & Computing', demandLevel: 'Critical', requiredProficiencyThreshold: 5, description: 'Advanced collegiate single-variable calculus, series, vectors, and polar coordinates.' },
+    { id: 'sk-tax-3', name: 'IEP Case Management & Compliance', category: 'Special Education & IEP', demandLevel: 'Critical', requiredProficiencyThreshold: 4, description: 'Individualized Education Program formulation, legal compliance, IDEA standards, and ARD coordination.' },
+    { id: 'sk-tax-4', name: 'Social-Emotional Learning (SEL)', category: 'Social-Emotional Learning & Care', demandLevel: 'High', requiredProficiencyThreshold: 4, description: 'Integrating self-awareness, self-management, social awareness, and relationship skills into K-12 schooling.' },
+    { id: 'sk-tax-5', name: 'Bilingual Spanish Instruction & Translation', category: 'ESL & Multilingual', demandLevel: 'High', requiredProficiencyThreshold: 4, description: 'Targeted language acquisition, dual-language immersion, and culturally responsive parent outreach.' },
+    { id: 'sk-tax-6', name: 'Python & Robotics Pedagogy', category: 'STEM & Computing', demandLevel: 'High', requiredProficiencyThreshold: 4, description: 'Practical coding, microcontrollers, FIRST robotics mentoring, and STEM problem solving.' },
+    { id: 'sk-tax-7', name: 'Trauma-Informed Classroom Practices', category: 'Social-Emotional Learning & Care', demandLevel: 'High', requiredProficiencyThreshold: 4, description: 'Neuroscience of trauma, proactive calming zones, and regulation strategies for vulnerable children.' },
+    { id: 'sk-tax-8', name: 'Instructional Coaching & Mentorship', category: 'Educational Leadership', demandLevel: 'Moderate', requiredProficiencyThreshold: 4, description: 'Classroom observations, non-evaluative feedback cycles, and professional growth scaffolding.' }
+  ];
+
+  const assignments = [
+    {
+      _id: 'asg-calc-101',
+      id: 'asg-calc-101',
+      title: 'AP Calculus BC (Section A)',
+      type: 'Class',
+      campus: 'Oakridge High Campus',
+      gradeLevel: 'Grade 11-12',
+      subject: 'Mathematics',
+      weeklyHours: 10,
+      studentCount: 28,
+      requiredSkills: ['AP Calculus BC', 'Differentiated Instruction'],
+      assignedWorkerId: 'wrk-chen-1',
+      assignedWorkerName: 'David Chen',
+      status: 'approved',
+      matchScore: 98,
+      conflictDetected: false,
+      term: 'Fall 2026',
+      createdAt: '2026-08-01T10:00:00.000Z'
+    },
+    {
+      _id: 'asg-alg-int-202',
+      id: 'asg-alg-int-202',
+      title: 'Grade 9 Algebra 1 Tier 2 Remediation Cohort',
+      type: 'Intervention Cohort',
+      campus: 'Oakridge High Campus',
+      gradeLevel: 'Grade 9',
+      subject: 'Mathematics',
+      weeklyHours: 6,
+      studentCount: 16,
+      requiredSkills: ['Algebra 1 Tier 2 Intervention', 'Differentiated Instruction'],
+      assignedWorkerId: null,
+      assignedWorkerName: 'Unassigned (Open for Match)',
+      status: 'pending_approval',
+      matchScore: 92,
+      conflictDetected: false,
+      term: 'Fall 2026',
+      candidateComparison: [
+        {
+          workerId: 'wrk-miller-7',
+          workerName: 'Lucas Miller',
+          roleTitle: 'Contractor Math Interventionist',
+          matchScore: 94,
+          skillFit: 'High (Tier 2 Certified)',
+          capacityFit: 'Optimal (16/20 hrs used, +6 hrs fits easily)',
+          burnoutImpact: 'Low risk (FTE goes from 0.40 to 0.55)',
+          hourlyRate: '$45/hr contractor',
+          scheduleConflicts: 0,
+          recommendationRank: 1
+        },
+        {
+          workerId: 'wrk-chen-1',
+          workerName: 'David Chen',
+          roleTitle: 'Senior Math Educator',
+          matchScore: 88,
+          skillFit: 'Overqualified (AP Specialist)',
+          capacityFit: 'OVERLOAD (Currently 42 hrs / 105% capacity)',
+          burnoutImpact: 'CRITICAL RISK (+6 hrs pushes to 48 hrs)',
+          hourlyRate: 'Salaried FTE (Overtime risk)',
+          scheduleConflicts: 2,
+          recommendationRank: 2
+        }
+      ],
+      createdAt: '2026-08-15T14:30:00.000Z'
+    },
+    {
+      _id: 'asg-sped-303',
+      id: 'asg-sped-303',
+      title: 'IEP High-Needs Support Cohort (Grades 9-10)',
+      type: 'Intervention Cohort',
+      campus: 'Oakridge High Campus',
+      gradeLevel: 'Grade 9-10',
+      subject: 'Special Education',
+      weeklyHours: 12,
+      studentCount: 18,
+      requiredSkills: ['IEP Case Management & Compliance', 'Social-Emotional Learning (SEL)'],
+      assignedWorkerId: 'wrk-rodriguez-2',
+      assignedWorkerName: 'Maria Rodriguez',
+      status: 'approved',
+      matchScore: 96,
+      conflictDetected: true,
+      conflictNotes: 'Exceeds recommended caseload by 6 students',
+      term: 'Fall 2026',
+      createdAt: '2026-08-10T11:00:00.000Z'
+    },
+    {
+      _id: 'asg-bil-404',
+      id: 'asg-bil-404',
+      title: 'Bilingual Grade 3 Accelerated Reading Pod',
+      type: 'Class',
+      campus: 'Lincoln Elementary Campus',
+      gradeLevel: 'Elementary K-5',
+      subject: 'Language & Literacy',
+      weeklyHours: 8,
+      studentCount: 14,
+      requiredSkills: ['Early Literacy & Phonics', 'Bilingual Spanish Instruction & Translation'],
+      assignedWorkerId: null,
+      assignedWorkerName: 'Unassigned (Candidate Review Active)',
+      status: 'draft',
+      matchScore: 85,
+      conflictDetected: false,
+      term: 'Fall 2026',
+      createdAt: '2026-08-20T09:15:00.000Z'
+    }
+  ];
+
+  const forecasts = [
+    {
+      _id: 'fc-high-2026',
+      id: 'fc-high-2026',
+      campus: 'Oakridge High Campus',
+      academicTerm: 'Fall 2026',
+      department: 'All Departments',
+      totalEnrolment: 1420,
+      enrolmentTrendPercent: 8.5,
+      currentStaffFTE: 68.0,
+      requiredStaffFTE: 74.0,
+      deficitHours: 240,
+      deficitFTE: 6.0,
+      riskLevel: 'Critical Deficit',
+      drivers: {
+        attendanceRate: 94.2,
+        learningProgressIndex: 82.5,
+        assessmentAverage: 76.4,
+        interventionVolume: 148,
+        parentEngagementRate: 68.9
+      },
+      criticalShortages: [
+        { area: 'Special Education & IEP Casework', shortageFTE: 2.5, urgency: 'Immediate' },
+        { area: 'AP & Advanced STEM / Computing', shortageFTE: 2.0, urgency: 'High' },
+        { area: 'Bilingual ESL Support', shortageFTE: 1.5, urgency: 'Moderate' }
+      ],
+      recommendations: [
+        'Authorize 2 immediate full-time postings for Special Ed Certified teachers',
+        'Deploy Contractor Lucas Miller for extra 10 hrs/wk in High School Algebra intervention',
+        'Provide stipend-backed cross-certification pathway for 3 Gen-Ed teachers in IEP endorsement'
+      ]
+    },
+    {
+      _id: 'fc-mid-2026',
+      id: 'fc-mid-2026',
+      campus: 'Oakridge Middle Campus',
+      academicTerm: 'Fall 2026',
+      department: 'All Departments',
+      totalEnrolment: 890,
+      enrolmentTrendPercent: 4.2,
+      currentStaffFTE: 44.0,
+      requiredStaffFTE: 46.0,
+      deficitHours: 80,
+      deficitFTE: 2.0,
+      riskLevel: 'Moderate Deficit',
+      drivers: {
+        attendanceRate: 95.8,
+        learningProgressIndex: 86.1,
+        assessmentAverage: 81.2,
+        interventionVolume: 72,
+        parentEngagementRate: 74.5
+      },
+      criticalShortages: [
+        { area: 'Middle Years Physical Science', shortageFTE: 1.0, urgency: 'High' },
+        { area: 'Reading Intervention Tier 2', shortageFTE: 1.0, urgency: 'Moderate' }
+      ],
+      recommendations: [
+        'Rebalance exploratory arts schedule to release 10 teaching periods to Core Science'
+      ]
+    },
+    {
+      _id: 'fc-elem-2026',
+      id: 'fc-elem-2026',
+      campus: 'Lincoln Elementary Campus',
+      academicTerm: 'Fall 2026',
+      department: 'All Departments',
+      totalEnrolment: 650,
+      enrolmentTrendPercent: -1.2,
+      currentStaffFTE: 34.0,
+      requiredStaffFTE: 33.0,
+      deficitHours: -40,
+      deficitFTE: -1.0,
+      riskLevel: 'Safe / Balanced',
+      drivers: {
+        attendanceRate: 96.5,
+        learningProgressIndex: 89.4,
+        assessmentAverage: 84.0,
+        interventionVolume: 41,
+        parentEngagementRate: 88.2
+      },
+      criticalShortages: [],
+      recommendations: [
+        'Explore voluntary part-time loan of 1 literacy specialist to Middle Campus for morning reading blocks'
+      ]
+    }
+  ];
+
+  const fairnessReviews = [
+    {
+      _id: 'fn-rev-101',
+      id: 'fn-rev-101',
+      recommendationType: 'Assignment Candidate Match',
+      assignmentTitle: 'Grade 9 Algebra 1 Tier 2 Remediation Cohort',
+      candidateId: 'wrk-miller-7',
+      candidateName: 'Lucas Miller',
+      proposedAction: 'Assign 6 weekly intervention hours to Contractor Lucas Miller',
+      confidenceScore: 94,
+      observableFactors: [
+        'Demonstrated 4/5 proficiency in Algebra 1 Tier 2 Intervention',
+        'Available uncommitted capacity of 4 hours on contract + 2 flex hours',
+        'Direct alignment between Middle School transition curriculum and Grade 9 remediation',
+        'Eliminates overtime overload from senior full-time educators'
+      ],
+      protectedAttributesExcluded: [
+        'Age, Gender, Race/Ethnicity, Marital Status, Family Status, Religious Affiliation'
+      ],
+      biasCheckPassed: true,
+      fairnessMetrics: {
+        demographicParityRatio: 0.98,
+        opportunityEqualityIndex: 0.96,
+        caseloadFairnessScore: 'Optimal'
+      },
+      reviewerDecision: 'approved',
+      reviewerId: 'usr-lead-1',
+      reviewerName: 'Sarah Jenkins',
+      reviewerReason: 'Lucas has exceptional rapport with transitioning 9th graders and Chen is already at 105% capacity. Best operational and student outcome.',
+      modelVersion: 'gemini-1.5-flash-v2.1',
+      sourceSnapshot: {
+        currentWorkload: '16/20 hrs',
+        candidateRank: 1,
+        benchmarkHours: 6
+      },
+      createdAt: '2026-08-25T11:20:00.000Z'
+    },
+    {
+      _id: 'fn-rev-102',
+      id: 'fn-rev-102',
+      recommendationType: 'Workload Rebalancing & Burnout Intervention',
+      assignmentTitle: 'Special Education Caseload Redistribution',
+      candidateId: 'wrk-rodriguez-2',
+      candidateName: 'Maria Rodriguez',
+      proposedAction: 'Offload 8 IEP students to newly hired tele-interventionist and sponsor credential renewal fee',
+      confidenceScore: 91,
+      observableFactors: [
+        'Active caseload of 32 exceeds district safety ceiling of 24 by 33%',
+        'Upcoming credential expiry in 18 days requires 20 hours of continuing ed',
+        'Burnout risk index calculated at 88/100 (Critical Level)'
+      ],
+      protectedAttributesExcluded: [
+        'Age, Gender, Race/Ethnicity, Tenure seniority prejudice'
+      ],
+      biasCheckPassed: true,
+      fairnessMetrics: {
+        demographicParityRatio: 1.0,
+        opportunityEqualityIndex: 0.95,
+        caseloadFairnessScore: 'Restorative'
+      },
+      reviewerDecision: 'pending',
+      reviewerId: null,
+      reviewerName: null,
+      reviewerReason: null,
+      modelVersion: 'gemini-1.5-flash-v2.1',
+      sourceSnapshot: {
+        currentCaseload: 32,
+        targetCaseload: 24,
+        daysToCertExpiry: 18
+      },
+      createdAt: '2026-08-26T15:45:00.000Z'
+    }
+  ];
+
+  const learningPaths = [
+    {
+      _id: 'lp-sped-1',
+      id: 'lp-sped-1',
+      workerId: 'wrk-chen-1',
+      workerName: 'David Chen',
+      title: 'Secondary IEP & 504 Accommodation Mastery',
+      type: 'Special Needs / IEP Training',
+      provider: 'State Special Education Training Institute',
+      durationHours: 15,
+      progressPercent: 40,
+      status: 'in_progress',
+      skillsTargeted: ['Special Needs Accommodation (504/IEP)', 'Differentiated Instruction'],
+      assignedBy: 'AI Recommendation',
+      outcomeRecorded: false,
+      deadline: '2026-11-15'
+    },
+    {
+      _id: 'lp-gce-2',
+      id: 'lp-gce-2',
+      workerId: 'wrk-chen-1',
+      workerName: 'David Chen',
+      title: 'Google Certified Educator Level 2 Recertification',
+      type: 'EdTech Certification',
+      provider: 'Google for Education',
+      durationHours: 8,
+      progressPercent: 10,
+      status: 'enrolled',
+      skillsTargeted: ['Classroom EdTech'],
+      assignedBy: 'Self-Enrolled',
+      outcomeRecorded: false,
+      deadline: '2026-10-10'
+    },
+    {
+      _id: 'lp-sel-3',
+      id: 'lp-sel-3',
+      workerId: 'wrk-rodriguez-2',
+      workerName: 'Maria Rodriguez',
+      title: 'CPI Nonviolent Crisis Intervention Renewal',
+      type: 'Certification Preparation',
+      provider: 'Crisis Prevention Institute',
+      durationHours: 12,
+      progressPercent: 85,
+      status: 'in_progress',
+      skillsTargeted: ['Crisis De-escalation & Safety'],
+      assignedBy: 'Team Lead',
+      outcomeRecorded: false,
+      deadline: '2026-09-20'
+    }
+  ];
+
+  const auditLogs = [
+    {
+      _id: 'aud-1',
+      id: 'aud-1',
+      eventId: 'EVT-9041',
+      actorId: 'usr-admin-1',
+      actorName: 'Dr. Eleanor Vance',
+      actorRole: 'HRAdmin',
+      action: 'SYSTEM_CONFIG_UPDATE',
+      entityType: 'SystemConfig',
+      entityId: 'cfg-default',
+      timestamp: '2026-08-20T08:30:12.000Z',
+      ipAddress: '10.0.1.45',
+      previousState: { aiConfidenceThreshold: 70 },
+      newState: { aiConfidenceThreshold: 75 },
+      notes: 'Increased AI recommendation confidence bar to 75% for workforce scheduling.'
+    },
+    {
+      _id: 'aud-2',
+      id: 'aud-2',
+      eventId: 'EVT-9042',
+      actorId: 'usr-lead-1',
+      actorName: 'Sarah Jenkins',
+      actorRole: 'TeamLead',
+      action: 'ASSIGNMENT_APPROVE',
+      entityType: 'Assignment',
+      entityId: 'asg-alg-int-202',
+      timestamp: '2026-08-25T11:22:45.000Z',
+      ipAddress: '10.0.2.12',
+      previousState: { status: 'pending_approval', assignedWorkerId: null },
+      newState: { status: 'approved', assignedWorkerId: 'wrk-miller-7' },
+      notes: 'Approved candidate recommendation of Lucas Miller based on capacity and skill match.'
+    },
+    {
+      _id: 'aud-3',
+      id: 'aud-3',
+      eventId: 'EVT-9043',
+      actorId: 'usr-planner-1',
+      actorName: 'Marcus Sterling',
+      actorRole: 'WorkforcePlanner',
+      action: 'CAPACITY_FORECAST_GENERATE',
+      entityType: 'CapacityForecast',
+      entityId: 'fc-high-2026',
+      timestamp: '2026-08-26T09:14:00.000Z',
+      ipAddress: '10.0.1.18',
+      previousState: null,
+      newState: { deficitHours: 240, deficitFTE: 6.0 },
+      notes: 'Executed automated capacity forecast using SIS Q1 preliminary enrolment rosters.'
+    }
+  ];
+
+  const notifications = [
+    {
+      _id: 'notif-1',
+      id: 'notif-1',
+      recipientRole: 'All',
+      recipientId: 'all',
+      title: 'Critical Certification Expiry Warning',
+      message: 'Maria Rodriguez: Special Education Specialist Credential expires in 18 days (2026-09-26). Action required to prevent non-compliance.',
+      type: 'urgent',
+      severity: 'critical',
+      read: false,
+      linkUrl: '/workers',
+      createdAt: '2026-09-08T06:00:00.000Z'
+    },
+    {
+      _id: 'notif-2',
+      id: 'notif-2',
+      recipientRole: 'TeamLead',
+      recipientId: 'usr-lead-1',
+      title: 'Teacher Workload Overload Alert',
+      message: 'David Chen is allocated at 105% weekly utilization (42h / 40h cap) with 3 AP preparations.',
+      type: 'assignment',
+      severity: 'high',
+      read: false,
+      linkUrl: '/assignment-comparison',
+      createdAt: '2026-09-07T14:10:00.000Z'
+    },
+    {
+      _id: 'notif-3',
+      id: 'notif-3',
+      recipientRole: 'WorkforcePlanner',
+      recipientId: 'usr-planner-1',
+      title: 'New AI Capacity Forecast Available',
+      message: 'Oakridge High 2026-27 forecast indicates a 6.0 FTE deficit driven by an 8.5% freshman surge.',
+      type: 'system',
+      severity: 'medium',
+      read: false,
+      linkUrl: '/skill-intelligence',
+      createdAt: '2026-09-06T10:00:00.000Z'
+    },
+    {
+      _id: 'notif-4',
+      id: 'notif-4',
+      recipientRole: 'Employee',
+      recipientId: 'usr-teacher-1',
+      title: 'Recommended PD Module Assigned',
+      message: 'Secondary IEP & 504 Accommodation Mastery course has been added to your professional development goals.',
+      type: 'approval',
+      severity: 'low',
+      read: true,
+      linkUrl: '/learning-mobility',
+      createdAt: '2026-09-05T09:00:00.000Z'
+    }
+  ];
+
+  const systemConfigs = [
+    {
+      _id: 'cfg-default',
+      id: 'cfg-default',
+      schoolGroupName: 'Oakridge Public Schools Academic Network',
+      academicYear: '2026-2027',
+      aiModel: 'gemini-1.5-flash',
+      aiConfidenceThreshold: 75,
+      fairnessStrictnessLevel: 'High',
+      autoNotifyManagers: true,
+      enableAuditEnforcement: true,
+      campuses: [
+        { id: 'cmp-high', name: 'Oakridge High Campus', location: '450 North Ridge Ave', grades: '9-12', principal: 'Dr. Arthur Campbell', totalStudents: 1420 },
+        { id: 'cmp-mid', name: 'Oakridge Middle Campus', location: '120 Valley Way', grades: '6-8', principal: 'Dr. Rebecca Stone', totalStudents: 890 },
+        { id: 'cmp-elem', name: 'Lincoln Elementary Campus', location: '88 Meadowbrook Dr', grades: 'K-5', principal: 'Marcus Washington', totalStudents: 650 }
+      ],
+      syncIntegrations: [
+        { name: 'PowerSchool SIS Student Enrolment', type: 'SIS', status: 'Healthy', lastSync: '2026-09-08T04:00:00.000Z' },
+        { name: 'Frontline Education HR & Absence Mgmt', type: 'HRIS', status: 'Healthy', lastSync: '2026-09-08T05:30:00.000Z' },
+        { name: 'Canvas LMS Learning Analytics', type: 'LMS', status: 'Healthy', lastSync: '2026-09-08T06:15:00.000Z' }
+      ]
+    }
+  ];
+
+  const studentCohorts = [
+    { id: 'coh-1', name: 'Freshman Math Foundation', grade: 'Grade 9', campus: 'Oakridge High Campus', studentCount: 380, attendanceRate: 93.8, interventionCount: 42, performanceAverage: 74.2, parentResponseRate: 64.5 },
+    { id: 'coh-2', name: 'Sophomore STEM Scholars', grade: 'Grade 10', campus: 'Oakridge High Campus', studentCount: 360, attendanceRate: 95.1, interventionCount: 28, performanceAverage: 81.6, parentResponseRate: 71.0 },
+    { id: 'coh-3', name: 'Junior College Prep Track', grade: 'Grade 11', campus: 'Oakridge High Campus', studentCount: 340, attendanceRate: 94.6, interventionCount: 19, performanceAverage: 83.4, parentResponseRate: 78.2 },
+    { id: 'coh-4', name: 'Senior Baccalaureate & AP', grade: 'Grade 12', campus: 'Oakridge High Campus', studentCount: 340, attendanceRate: 96.0, interventionCount: 12, performanceAverage: 88.0, parentResponseRate: 82.5 }
+  ];
+
+  return {
+    users,
+    workers,
+    skills,
+    assignments,
+    forecasts,
+    fairnessReviews,
+    learningPaths,
+    auditLogs,
+    notifications,
+    systemConfigs,
+    studentCohorts
+  };
+}
+
+export async function runSeed() {
+  const data = getSeedData();
+  resetStoreData(data);
+  console.log('[Seed] Successfully seeded K-12 Workforce Intelligence Platform master records.');
+  return data;
+}
+
+// If invoked directly from CLI
+if (process.argv[1] && process.argv[1].endsWith('seedData.js')) {
+  runSeed().then(() => {
+    console.log('[Seed] Database initialization complete.');
+    process.exit(0);
+  });
+}
