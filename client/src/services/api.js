@@ -79,8 +79,16 @@ export const learningAPI = {
 };
 
 export const reportsAPI = {
-  getInventory: () => api.get('/reports/inventory'),
-  exportCSVUrl: (reportType) => `/api/v1/reports/export/csv?reportType=${reportType}`,
+  getInventory: (params) => api.get('/reports/inventory', { params }),
+
+  exportCSV: (reportType, params = {}) =>
+    api.get('/reports/export/csv', {
+      params: {
+        reportType,
+        ...params,
+      },
+      responseType: 'blob',
+    }),
 };
 
 export const notificationsAPI = {

@@ -12,9 +12,9 @@
       "department": "HR & Operational Governance",
       "active": true,
       "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200",
-      "lastLogin": "2026-09-08T10:30:03.172Z",
+      "lastLogin": "2026-09-11T08:48:43.608Z",
       "createdAt": "2026-01-10T08:00:00.000Z",
-      "updatedAt": "2026-09-08T10:30:03.173Z"
+      "updatedAt": "2026-09-11T08:48:43.608Z"
     },
     {
       "_id": "usr-planner-1",
@@ -94,8 +94,8 @@
       "employmentType": "Full-Time",
       "fte": 1,
       "weeklyHoursMax": 40,
-      "currentWorkloadHours": 42,
-      "utilizationRate": 105,
+      "currentWorkloadHours": 52,
+      "utilizationRate": 130,
       "burnoutRisk": "Critical",
       "burnoutFactors": [
         "Weekly teaching & prep hours exceed 40 hours limit (42h / 105% util)",
@@ -213,7 +213,8 @@
       ],
       "assignedClassesCount": 5,
       "studentCaseload": 135,
-      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200"
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200",
+      "updatedAt": "2026-09-11T05:52:15.875Z"
     },
     {
       "_id": "wrk-rodriguez-2",
@@ -274,9 +275,9 @@
           "id": "sk-10",
           "name": "Crisis De-escalation & Safety",
           "category": "Social-Emotional Learning & Care",
-          "proficiency": 4,
+          "proficiency": 5,
           "verified": true,
-          "evidence": "CPI Nonviolent Crisis Intervention"
+          "evidence": "Completed CPI Nonviolent Crisis Intervention Renewal (Crisis Prevention Institute)"
         }
       ],
       "certifications": [
@@ -348,7 +349,8 @@
       ],
       "assignedClassesCount": 3,
       "studentCaseload": 48,
-      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200"
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200",
+      "updatedAt": "2026-09-11T08:55:20.439Z"
     },
     {
       "_id": "wrk-jenkins-3",
@@ -474,9 +476,9 @@
       "employmentType": "Full-Time",
       "fte": 1,
       "weeklyHoursMax": 40,
-      "currentWorkloadHours": 32,
-      "utilizationRate": 80,
-      "burnoutRisk": "Low",
+      "currentWorkloadHours": 42,
+      "utilizationRate": 105,
+      "burnoutRisk": "Critical",
       "burnoutFactors": [
         "Balanced schedule with 8 open prep & intervention hours"
       ],
@@ -538,7 +540,8 @@
       "developmentGoals": [],
       "assignedClassesCount": 4,
       "studentCaseload": 96,
-      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200"
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200",
+      "updatedAt": "2026-09-11T05:51:53.547Z"
     },
     {
       "_id": "wrk-patel-5",
@@ -852,13 +855,167 @@
         "AP Calculus BC",
         "Differentiated Instruction"
       ],
-      "assignedWorkerId": "wrk-chen-1",
-      "assignedWorkerName": "David Chen",
-      "status": "approved",
-      "matchScore": 98,
+      "assignedWorkerId": "wrk-wilson-4",
+      "assignedWorkerName": "James Wilson",
+      "status": "overridden",
+      "matchScore": 66,
       "conflictDetected": false,
       "term": "Fall 2026",
-      "createdAt": "2026-08-01T10:00:00.000Z"
+      "createdAt": "2026-08-01T10:00:00.000Z",
+      "candidateComparison": [
+        {
+          "workerId": "wrk-chen-1",
+          "workerName": "David Chen",
+          "roleTitle": "Senior Mathematics & Robotics Educator",
+          "campus": "Oakridge High Campus",
+          "compositeScore": 66,
+          "skillFitScore": 96,
+          "capacityFitScore": 30,
+          "currentUtilization": "105% (42h/40h)",
+          "projectedUtilization": "130% (52h/40h)",
+          "burnoutRisk": "Critical",
+          "scheduleConflicts": 0,
+          "conflictDescription": "No timetable collision detected",
+          "recommendationRank": 1,
+          "observableFactors": [
+            "Verified skills match 2 of 2 course prerequisites",
+            "Current load: 42h; Post-assignment load: 52h (130% utilization)",
+            "Tenure & experience: 11 years in field"
+          ]
+        },
+        {
+          "workerId": "wrk-wilson-4",
+          "workerName": "James Wilson",
+          "roleTitle": "English Language Arts & Literature Specialist",
+          "campus": "Oakridge High Campus",
+          "compositeScore": 27,
+          "skillFitScore": 0,
+          "capacityFitScore": 60,
+          "currentUtilization": "80% (32h/40h)",
+          "projectedUtilization": "105% (42h/40h)",
+          "burnoutRisk": "High",
+          "scheduleConflicts": 0,
+          "conflictDescription": "No timetable collision detected",
+          "recommendationRank": 2,
+          "observableFactors": [
+            "Verified skills match 0 of 2 course prerequisites",
+            "Current load: 32h; Post-assignment load: 42h (105% utilization)",
+            "Tenure & experience: 8 years in field"
+          ]
+        },
+        {
+          "workerId": "wrk-rodriguez-2",
+          "workerName": "Maria Rodriguez",
+          "roleTitle": "Special Education & Student Care Specialist",
+          "campus": "Oakridge High Campus",
+          "compositeScore": 14,
+          "skillFitScore": 0,
+          "capacityFitScore": 30,
+          "currentUtilization": "108% (43h/40h)",
+          "projectedUtilization": "133% (53h/40h)",
+          "burnoutRisk": "Critical",
+          "scheduleConflicts": 0,
+          "conflictDescription": "No timetable collision detected",
+          "recommendationRank": 3,
+          "observableFactors": [
+            "Verified skills match 0 of 2 course prerequisites",
+            "Current load: 43h; Post-assignment load: 53h (133% utilization)",
+            "Tenure & experience: 9 years in field"
+          ]
+        },
+        {
+          "workerId": "wrk-jenkins-3",
+          "workerName": "Sarah Jenkins",
+          "roleTitle": "STEM & Mathematics Department Chair",
+          "campus": "Oakridge High Campus",
+          "compositeScore": 14,
+          "skillFitScore": 0,
+          "capacityFitScore": 30,
+          "currentUtilization": "93% (37h/40h)",
+          "projectedUtilization": "118% (47h/40h)",
+          "burnoutRisk": "Critical",
+          "scheduleConflicts": 0,
+          "conflictDescription": "No timetable collision detected",
+          "recommendationRank": 4,
+          "observableFactors": [
+            "Verified skills match 0 of 2 course prerequisites",
+            "Current load: 37h; Post-assignment load: 47h (118% utilization)",
+            "Tenure & experience: 15 years in field"
+          ]
+        },
+        {
+          "workerId": "wrk-patel-5",
+          "workerName": "Dr. Priya Patel",
+          "roleTitle": "Biology & Biomedical Science Lead",
+          "campus": "Oakridge High Campus",
+          "compositeScore": 14,
+          "skillFitScore": 0,
+          "capacityFitScore": 30,
+          "currentUtilization": "88% (35h/40h)",
+          "projectedUtilization": "113% (45h/40h)",
+          "burnoutRisk": "Critical",
+          "scheduleConflicts": 0,
+          "conflictDescription": "No timetable collision detected",
+          "recommendationRank": 5,
+          "observableFactors": [
+            "Verified skills match 0 of 2 course prerequisites",
+            "Current load: 35h; Post-assignment load: 45h (113% utilization)",
+            "Tenure & experience: 7 years in field"
+          ]
+        },
+        {
+          "workerId": "wrk-watson-6",
+          "workerName": "Emily Watson",
+          "roleTitle": "Grade 4 Lead Teacher & Literacy Coach",
+          "campus": "Lincoln Elementary Campus",
+          "compositeScore": 14,
+          "skillFitScore": 0,
+          "capacityFitScore": 30,
+          "currentUtilization": "102% (41h/40h)",
+          "projectedUtilization": "127% (51h/40h)",
+          "burnoutRisk": "Critical",
+          "scheduleConflicts": 1,
+          "conflictDescription": "Cross-campus transit required",
+          "recommendationRank": 6,
+          "observableFactors": [
+            "Verified skills match 0 of 2 course prerequisites",
+            "Current load: 41h; Post-assignment load: 51h (127% utilization)",
+            "Tenure & experience: 12 years in field"
+          ]
+        },
+        {
+          "workerId": "wrk-miller-7",
+          "workerName": "Lucas Miller",
+          "roleTitle": "Contractor Mathematics Interventionist",
+          "campus": "Oakridge Middle Campus",
+          "compositeScore": 14,
+          "skillFitScore": 0,
+          "capacityFitScore": 30,
+          "currentUtilization": "80% (16h/20h)",
+          "projectedUtilization": "130% (26h/20h)",
+          "burnoutRisk": "Critical",
+          "scheduleConflicts": 1,
+          "conflictDescription": "Cross-campus transit required",
+          "recommendationRank": 7,
+          "observableFactors": [
+            "Verified skills match 0 of 2 course prerequisites",
+            "Current load: 16h; Post-assignment load: 26h (130% utilization)",
+            "Tenure & experience: 4 years in field"
+          ]
+        }
+      ],
+      "updatedAt": "2026-09-11T05:56:57.968Z",
+      "overrideDetails": {
+        "overridden": true,
+        "previousWorkerId": "wrk-chen-1",
+        "previousWorkerName": "David Chen",
+        "newWorkerId": "wrk-wilson-4",
+        "newWorkerName": "James Wilson",
+        "reason": "have good experience",
+        "actor": "Dr. Eleanor Vance",
+        "actorRole": "HRAdmin",
+        "timestamp": "2026-09-11T05:56:57.968Z"
+      }
     },
     {
       "_id": "asg-alg-int-202",
@@ -877,36 +1034,153 @@
       "assignedWorkerId": null,
       "assignedWorkerName": "Unassigned (Open for Match)",
       "status": "pending_approval",
-      "matchScore": 92,
+      "matchScore": 43,
       "conflictDetected": false,
       "term": "Fall 2026",
       "candidateComparison": [
         {
-          "workerId": "wrk-miller-7",
-          "workerName": "Lucas Miller",
-          "roleTitle": "Contractor Math Interventionist",
-          "matchScore": 94,
-          "skillFit": "High (Tier 2 Certified)",
-          "capacityFit": "Optimal (16/20 hrs used, +6 hrs fits easily)",
-          "burnoutImpact": "Low risk (FTE goes from 0.40 to 0.55)",
-          "hourlyRate": "$45/hr contractor",
+          "workerId": "wrk-wilson-4",
+          "workerName": "James Wilson",
+          "roleTitle": "English Language Arts & Literature Specialist",
+          "campus": "Oakridge High Campus",
+          "compositeScore": 43,
+          "skillFitScore": 0,
+          "capacityFitScore": 95,
+          "currentUtilization": "80% (32h/40h)",
+          "projectedUtilization": "95% (38h/40h)",
+          "burnoutRisk": "Low",
           "scheduleConflicts": 0,
-          "recommendationRank": 1
+          "conflictDescription": "No timetable collision detected",
+          "recommendationRank": 1,
+          "observableFactors": [
+            "Verified skills match 0 of 2 course prerequisites",
+            "Current load: 32h; Post-assignment load: 38h (95% utilization)",
+            "Tenure & experience: 8 years in field"
+          ]
         },
         {
           "workerId": "wrk-chen-1",
           "workerName": "David Chen",
-          "roleTitle": "Senior Math Educator",
-          "matchScore": 88,
-          "skillFit": "Overqualified (AP Specialist)",
-          "capacityFit": "OVERLOAD (Currently 42 hrs / 105% capacity)",
-          "burnoutImpact": "CRITICAL RISK (+6 hrs pushes to 48 hrs)",
-          "hourlyRate": "Salaried FTE (Overtime risk)",
-          "scheduleConflicts": 2,
-          "recommendationRank": 2
+          "roleTitle": "Senior Mathematics & Robotics Educator",
+          "campus": "Oakridge High Campus",
+          "compositeScore": 39,
+          "skillFitScore": 46,
+          "capacityFitScore": 30,
+          "currentUtilization": "105% (42h/40h)",
+          "projectedUtilization": "120% (48h/40h)",
+          "burnoutRisk": "Critical",
+          "scheduleConflicts": 0,
+          "conflictDescription": "No timetable collision detected",
+          "recommendationRank": 2,
+          "observableFactors": [
+            "Verified skills match 1 of 2 course prerequisites",
+            "Current load: 42h; Post-assignment load: 48h (120% utilization)",
+            "Tenure & experience: 11 years in field"
+          ]
+        },
+        {
+          "workerId": "wrk-miller-7",
+          "workerName": "Lucas Miller",
+          "roleTitle": "Contractor Mathematics Interventionist",
+          "campus": "Oakridge Middle Campus",
+          "compositeScore": 39,
+          "skillFitScore": 46,
+          "capacityFitScore": 30,
+          "currentUtilization": "80% (16h/20h)",
+          "projectedUtilization": "110% (22h/20h)",
+          "burnoutRisk": "Critical",
+          "scheduleConflicts": 1,
+          "conflictDescription": "Cross-campus transit required",
+          "recommendationRank": 3,
+          "observableFactors": [
+            "Verified skills match 1 of 2 course prerequisites",
+            "Current load: 16h; Post-assignment load: 22h (110% utilization)",
+            "Tenure & experience: 4 years in field"
+          ]
+        },
+        {
+          "workerId": "wrk-patel-5",
+          "workerName": "Dr. Priya Patel",
+          "roleTitle": "Biology & Biomedical Science Lead",
+          "campus": "Oakridge High Campus",
+          "compositeScore": 27,
+          "skillFitScore": 0,
+          "capacityFitScore": 60,
+          "currentUtilization": "88% (35h/40h)",
+          "projectedUtilization": "102% (41h/40h)",
+          "burnoutRisk": "High",
+          "scheduleConflicts": 0,
+          "conflictDescription": "No timetable collision detected",
+          "recommendationRank": 4,
+          "observableFactors": [
+            "Verified skills match 0 of 2 course prerequisites",
+            "Current load: 35h; Post-assignment load: 41h (102% utilization)",
+            "Tenure & experience: 7 years in field"
+          ]
+        },
+        {
+          "workerId": "wrk-rodriguez-2",
+          "workerName": "Maria Rodriguez",
+          "roleTitle": "Special Education & Student Care Specialist",
+          "campus": "Oakridge High Campus",
+          "compositeScore": 14,
+          "skillFitScore": 0,
+          "capacityFitScore": 30,
+          "currentUtilization": "108% (43h/40h)",
+          "projectedUtilization": "123% (49h/40h)",
+          "burnoutRisk": "Critical",
+          "scheduleConflicts": 0,
+          "conflictDescription": "No timetable collision detected",
+          "recommendationRank": 5,
+          "observableFactors": [
+            "Verified skills match 0 of 2 course prerequisites",
+            "Current load: 43h; Post-assignment load: 49h (123% utilization)",
+            "Tenure & experience: 9 years in field"
+          ]
+        },
+        {
+          "workerId": "wrk-jenkins-3",
+          "workerName": "Sarah Jenkins",
+          "roleTitle": "STEM & Mathematics Department Chair",
+          "campus": "Oakridge High Campus",
+          "compositeScore": 14,
+          "skillFitScore": 0,
+          "capacityFitScore": 30,
+          "currentUtilization": "93% (37h/40h)",
+          "projectedUtilization": "108% (43h/40h)",
+          "burnoutRisk": "Critical",
+          "scheduleConflicts": 0,
+          "conflictDescription": "No timetable collision detected",
+          "recommendationRank": 6,
+          "observableFactors": [
+            "Verified skills match 0 of 2 course prerequisites",
+            "Current load: 37h; Post-assignment load: 43h (108% utilization)",
+            "Tenure & experience: 15 years in field"
+          ]
+        },
+        {
+          "workerId": "wrk-watson-6",
+          "workerName": "Emily Watson",
+          "roleTitle": "Grade 4 Lead Teacher & Literacy Coach",
+          "campus": "Lincoln Elementary Campus",
+          "compositeScore": 14,
+          "skillFitScore": 0,
+          "capacityFitScore": 30,
+          "currentUtilization": "102% (41h/40h)",
+          "projectedUtilization": "118% (47h/40h)",
+          "burnoutRisk": "Critical",
+          "scheduleConflicts": 1,
+          "conflictDescription": "Cross-campus transit required",
+          "recommendationRank": 7,
+          "observableFactors": [
+            "Verified skills match 0 of 2 course prerequisites",
+            "Current load: 41h; Post-assignment load: 47h (118% utilization)",
+            "Tenure & experience: 12 years in field"
+          ]
         }
       ],
-      "createdAt": "2026-08-15T14:30:00.000Z"
+      "createdAt": "2026-08-15T14:30:00.000Z",
+      "updatedAt": "2026-09-11T05:51:23.545Z"
     },
     {
       "_id": "asg-sped-303",
@@ -1120,17 +1394,55 @@
         "opportunityEqualityIndex": 0.95,
         "caseloadFairnessScore": "Restorative"
       },
-      "reviewerDecision": "pending",
-      "reviewerId": null,
-      "reviewerName": null,
-      "reviewerReason": null,
+      "reviewerDecision": "approved",
+      "reviewerId": "usr-admin-1",
+      "reviewerName": "Dr. Eleanor Vance",
+      "reviewerReason": "hello world",
       "modelVersion": "gemini-1.5-flash-v2.1",
       "sourceSnapshot": {
         "currentCaseload": 32,
         "targetCaseload": 24,
         "daysToCertExpiry": 18
       },
-      "createdAt": "2026-08-26T15:45:00.000Z"
+      "createdAt": "2026-08-26T15:45:00.000Z",
+      "reviewedAt": "2026-09-11T08:41:28.730Z",
+      "updatedAt": "2026-09-11T08:41:28.730Z"
+    },
+    {
+      "recommendationType": "Assignment Override by Manager",
+      "assignmentTitle": "AP Calculus BC (Section A)",
+      "candidateId": "wrk-wilson-4",
+      "candidateName": "James Wilson",
+      "proposedAction": "Manager override assigned James Wilson (overriding AI match)",
+      "confidenceScore": 100,
+      "observableFactors": [
+        "Manager discretionary administrative action",
+        "have good experience"
+      ],
+      "protectedAttributesExcluded": [
+        "Race",
+        "Gender",
+        "Age"
+      ],
+      "biasCheckPassed": true,
+      "fairnessMetrics": {
+        "demographicParityRatio": 1,
+        "opportunityEqualityIndex": 1
+      },
+      "reviewerDecision": "overridden",
+      "reviewerId": "usr-admin-1",
+      "reviewerName": "Dr. Eleanor Vance",
+      "reviewerReason": "have good experience",
+      "modelVersion": "human-authorized-override",
+      "sourceSnapshot": {
+        "previousWorkerName": "David Chen",
+        "newWorkerName": "James Wilson",
+        "reason": "have good experience"
+      },
+      "_id": "b578a5c9-e790-441b-91c3-96d4d50023db",
+      "id": "b578a5c9-e790-441b-91c3-96d4d50023db",
+      "createdAt": "2026-09-11T05:56:57.972Z",
+      "updatedAt": "2026-09-11T05:56:57.972Z"
     }
   ],
   "learningPaths": [
@@ -1180,14 +1492,36 @@
       "type": "Certification Preparation",
       "provider": "Crisis Prevention Institute",
       "durationHours": 12,
-      "progressPercent": 85,
-      "status": "in_progress",
+      "progressPercent": 100,
+      "status": "completed",
       "skillsTargeted": [
         "Crisis De-escalation & Safety"
       ],
       "assignedBy": "Team Lead",
+      "outcomeRecorded": true,
+      "deadline": "2026-09-20",
+      "outcomeNotes": "Record mentor observation, assessment, or certificate evidence.",
+      "updatedAt": "2026-09-11T08:55:20.435Z"
+    },
+    {
+      "workerId": "wrk-chen-1",
+      "workerName": "David Chen",
+      "title": "ADS",
+      "type": "EdTech Certification",
+      "provider": "State Educator Academy",
+      "durationHours": 15,
+      "progressPercent": 0,
+      "status": "enrolled",
+      "skillsTargeted": [
+        "Special Needs Accommodation (504/IEP)"
+      ],
+      "assignedBy": "Dr. Eleanor Vance",
       "outcomeRecorded": false,
-      "deadline": "2026-09-20"
+      "deadline": "2026-12-31",
+      "_id": "0dfcc375-f71d-4abb-a30f-d00e8d416ca9",
+      "id": "0dfcc375-f71d-4abb-a30f-d00e8d416ca9",
+      "createdAt": "2026-09-11T08:54:34.250Z",
+      "updatedAt": "2026-09-11T08:54:34.250Z"
     }
   ],
   "auditLogs": [
@@ -1449,6 +1783,264 @@
       "id": "2d622966-2b81-442f-aa1b-ccb697d691b2",
       "createdAt": "2026-09-08T10:30:03.181Z",
       "updatedAt": "2026-09-08T10:30:03.181Z"
+    },
+    {
+      "eventId": "EVT-8204",
+      "actorId": "usr-admin-1",
+      "actorName": "Dr. Eleanor Vance",
+      "actorRole": "HRAdmin",
+      "action": "AUTH_LOGIN",
+      "entityType": "User",
+      "entityId": "usr-admin-1",
+      "timestamp": "2026-09-11T05:29:29.647Z",
+      "ipAddress": "::1",
+      "previousState": null,
+      "newState": null,
+      "notes": "User signed in successfully with role HRAdmin",
+      "_id": "d23ae4bb-0cb2-49cd-9953-8b2e1a8a1ea0",
+      "id": "d23ae4bb-0cb2-49cd-9953-8b2e1a8a1ea0",
+      "createdAt": "2026-09-11T05:29:29.648Z",
+      "updatedAt": "2026-09-11T05:29:29.648Z"
+    },
+    {
+      "eventId": "EVT-8019",
+      "actorId": "usr-admin-1",
+      "actorName": "Dr. Eleanor Vance",
+      "actorRole": "HRAdmin",
+      "action": "DATA_EXPORT_CSV",
+      "entityType": "Report",
+      "entityId": "workers",
+      "timestamp": "2026-09-11T05:30:55.535Z",
+      "ipAddress": "::1",
+      "previousState": null,
+      "newState": null,
+      "notes": "Exported workers dataset in CSV format",
+      "_id": "b02de912-b4ae-44ed-a91f-1284c1049588",
+      "id": "b02de912-b4ae-44ed-a91f-1284c1049588",
+      "createdAt": "2026-09-11T05:30:55.537Z",
+      "updatedAt": "2026-09-11T05:30:55.537Z"
+    },
+    {
+      "eventId": "EVT-4012",
+      "actorId": "usr-admin-1",
+      "actorName": "Dr. Eleanor Vance",
+      "actorRole": "HRAdmin",
+      "action": "DATA_EXPORT_CSV",
+      "entityType": "Report",
+      "entityId": "capacity",
+      "timestamp": "2026-09-11T05:31:30.251Z",
+      "ipAddress": "::1",
+      "previousState": null,
+      "newState": null,
+      "notes": "Exported capacity dataset in CSV format",
+      "_id": "4bf5aaf0-7517-46f8-97f7-74970029cb63",
+      "id": "4bf5aaf0-7517-46f8-97f7-74970029cb63",
+      "createdAt": "2026-09-11T05:31:30.252Z",
+      "updatedAt": "2026-09-11T05:31:30.252Z"
+    },
+    {
+      "eventId": "EVT-4738",
+      "actorId": "usr-admin-1",
+      "actorName": "Dr. Eleanor Vance",
+      "actorRole": "HRAdmin",
+      "action": "AI_SKILL_INFERENCE",
+      "entityType": "SkillInference",
+      "entityId": "inference-run",
+      "timestamp": "2026-09-11T05:46:41.725Z",
+      "ipAddress": "::1",
+      "previousState": null,
+      "newState": null,
+      "notes": "Extracted 4 skills with confidence 89% (Model: gemini-1.5-flash)",
+      "_id": "d63e5aaa-ea38-45a1-8c73-650c11e09a35",
+      "id": "d63e5aaa-ea38-45a1-8c73-650c11e09a35",
+      "createdAt": "2026-09-11T05:46:41.726Z",
+      "updatedAt": "2026-09-11T05:46:41.726Z"
+    },
+    {
+      "eventId": "EVT-8133",
+      "actorId": "usr-admin-1",
+      "actorName": "Dr. Eleanor Vance",
+      "actorRole": "HRAdmin",
+      "action": "AI_SKILL_INFERENCE",
+      "entityType": "SkillInference",
+      "entityId": "inference-run",
+      "timestamp": "2026-09-11T05:47:04.913Z",
+      "ipAddress": "::1",
+      "previousState": null,
+      "newState": null,
+      "notes": "Extracted 4 skills with confidence 89% (Model: gemini-1.5-flash)",
+      "_id": "bad09ee1-5234-4561-950e-bb3256a395e9",
+      "id": "bad09ee1-5234-4561-950e-bb3256a395e9",
+      "createdAt": "2026-09-11T05:47:04.914Z",
+      "updatedAt": "2026-09-11T05:47:04.914Z"
+    },
+    {
+      "eventId": "EVT-6217",
+      "actorId": "usr-admin-1",
+      "actorName": "Dr. Eleanor Vance",
+      "actorRole": "HRAdmin",
+      "action": "AI_SKILL_INFERENCE",
+      "entityType": "SkillInference",
+      "entityId": "inference-run",
+      "timestamp": "2026-09-11T05:47:14.752Z",
+      "ipAddress": "::1",
+      "previousState": null,
+      "newState": null,
+      "notes": "Extracted 5 skills with confidence 89% (Model: gemini-1.5-flash)",
+      "_id": "c2413fd9-00c0-4cd6-9a64-dd0b861e3de6",
+      "id": "c2413fd9-00c0-4cd6-9a64-dd0b861e3de6",
+      "createdAt": "2026-09-11T05:47:14.753Z",
+      "updatedAt": "2026-09-11T05:47:14.753Z"
+    },
+    {
+      "eventId": "EVT-6479",
+      "actorId": "usr-admin-1",
+      "actorName": "Dr. Eleanor Vance",
+      "actorRole": "HRAdmin",
+      "action": "AI_SKILL_INFERENCE",
+      "entityType": "SkillInference",
+      "entityId": "inference-run",
+      "timestamp": "2026-09-11T05:47:33.075Z",
+      "ipAddress": "::1",
+      "previousState": null,
+      "newState": null,
+      "notes": "Extracted 2 skills with confidence 89% (Model: gemini-1.5-flash)",
+      "_id": "8d21a383-ffe5-4ba0-adde-98a3ec8128eb",
+      "id": "8d21a383-ffe5-4ba0-adde-98a3ec8128eb",
+      "createdAt": "2026-09-11T05:47:33.076Z",
+      "updatedAt": "2026-09-11T05:47:33.076Z"
+    },
+    {
+      "eventId": "EVT-5948",
+      "actorId": "usr-admin-1",
+      "actorName": "Dr. Eleanor Vance",
+      "actorRole": "HRAdmin",
+      "action": "ASSIGNMENT_APPROVED",
+      "entityType": "Assignment",
+      "entityId": "asg-calc-101",
+      "timestamp": "2026-09-11T05:51:53.551Z",
+      "ipAddress": "::1",
+      "previousState": {
+        "assignedWorkerId": "wrk-chen-1",
+        "assignedWorkerName": "David Chen"
+      },
+      "newState": {
+        "assignedWorkerId": "wrk-wilson-4",
+        "assignedWorkerName": "James Wilson"
+      },
+      "notes": "Assigned James Wilson to AP Calculus BC (Section A)",
+      "_id": "aca6fc23-510f-4bad-9e1d-fe895fbecf2a",
+      "id": "aca6fc23-510f-4bad-9e1d-fe895fbecf2a",
+      "createdAt": "2026-09-11T05:51:53.552Z",
+      "updatedAt": "2026-09-11T05:51:53.552Z"
+    },
+    {
+      "eventId": "EVT-4808",
+      "actorId": "usr-admin-1",
+      "actorName": "Dr. Eleanor Vance",
+      "actorRole": "HRAdmin",
+      "action": "ASSIGNMENT_APPROVED",
+      "entityType": "Assignment",
+      "entityId": "asg-calc-101",
+      "timestamp": "2026-09-11T05:52:15.879Z",
+      "ipAddress": "::1",
+      "previousState": {
+        "assignedWorkerId": "wrk-wilson-4",
+        "assignedWorkerName": "James Wilson"
+      },
+      "newState": {
+        "assignedWorkerId": "wrk-chen-1",
+        "assignedWorkerName": "David Chen"
+      },
+      "notes": "Assigned David Chen to AP Calculus BC (Section A)",
+      "_id": "68953996-ddca-43f0-8113-7fdfb3c4653a",
+      "id": "68953996-ddca-43f0-8113-7fdfb3c4653a",
+      "createdAt": "2026-09-11T05:52:15.880Z",
+      "updatedAt": "2026-09-11T05:52:15.880Z"
+    },
+    {
+      "eventId": "EVT-8602",
+      "actorId": "usr-admin-1",
+      "actorName": "Dr. Eleanor Vance",
+      "actorRole": "HRAdmin",
+      "action": "ASSIGNMENT_OVERRIDDEN",
+      "entityType": "Assignment",
+      "entityId": "asg-calc-101",
+      "timestamp": "2026-09-11T05:56:57.976Z",
+      "ipAddress": "::1",
+      "previousState": {
+        "assignedWorkerId": "wrk-chen-1",
+        "assignedWorkerName": "David Chen"
+      },
+      "newState": {
+        "assignedWorkerId": "wrk-wilson-4",
+        "assignedWorkerName": "James Wilson",
+        "reason": "have good experience"
+      },
+      "notes": "Manager override: have good experience",
+      "_id": "1407c61e-d09b-4a08-9e03-4e0295954865",
+      "id": "1407c61e-d09b-4a08-9e03-4e0295954865",
+      "createdAt": "2026-09-11T05:56:57.976Z",
+      "updatedAt": "2026-09-11T05:56:57.976Z"
+    },
+    {
+      "eventId": "EVT-5087",
+      "actorId": "usr-admin-1",
+      "actorName": "Dr. Eleanor Vance",
+      "actorRole": "HRAdmin",
+      "action": "FAIRNESS_DECISION_RECORDED",
+      "entityType": "FairnessReview",
+      "entityId": "fn-rev-102",
+      "timestamp": "2026-09-11T08:41:28.736Z",
+      "ipAddress": "::1",
+      "previousState": {
+        "reviewerDecision": "pending"
+      },
+      "newState": {
+        "reviewerDecision": "approved",
+        "reviewerReason": "hello world"
+      },
+      "notes": "Human Reviewer (Dr. Eleanor Vance) recorded approved on recommendation Offload 8 IEP students to newly hired tele-interventionist and sponsor credential renewal fee",
+      "_id": "28da6aad-a699-49d5-88fd-a96a7f135d43",
+      "id": "28da6aad-a699-49d5-88fd-a96a7f135d43",
+      "createdAt": "2026-09-11T08:41:28.737Z",
+      "updatedAt": "2026-09-11T08:41:28.737Z"
+    },
+    {
+      "eventId": "EVT-3598",
+      "actorId": "usr-admin-1",
+      "actorName": "Dr. Eleanor Vance",
+      "actorRole": "HRAdmin",
+      "action": "AUTH_LOGIN",
+      "entityType": "User",
+      "entityId": "usr-admin-1",
+      "timestamp": "2026-09-11T08:48:43.616Z",
+      "ipAddress": "::1",
+      "previousState": null,
+      "newState": null,
+      "notes": "User signed in successfully with role HRAdmin",
+      "_id": "28791f40-11ba-475c-81ea-04d5b99c6883",
+      "id": "28791f40-11ba-475c-81ea-04d5b99c6883",
+      "createdAt": "2026-09-11T08:48:43.616Z",
+      "updatedAt": "2026-09-11T08:48:43.616Z"
+    },
+    {
+      "eventId": "EVT-6968",
+      "actorId": "usr-admin-1",
+      "actorName": "Dr. Eleanor Vance",
+      "actorRole": "HRAdmin",
+      "action": "LEARNING_PATH_ENROLL",
+      "entityType": "LearningPath",
+      "entityId": "0dfcc375-f71d-4abb-a30f-d00e8d416ca9",
+      "timestamp": "2026-09-11T08:54:34.253Z",
+      "ipAddress": "::1",
+      "previousState": null,
+      "newState": null,
+      "notes": "Enrolled David Chen in ADS",
+      "_id": "ad7d67b1-ee1f-41c6-ba47-da4cb24c5222",
+      "id": "ad7d67b1-ee1f-41c6-ba47-da4cb24c5222",
+      "createdAt": "2026-09-11T08:54:34.253Z",
+      "updatedAt": "2026-09-11T08:54:34.253Z"
     }
   ],
   "notifications": [
